@@ -80,7 +80,7 @@ class GameController: UIViewController {
         
     print(isOver())
         if isOver() == true {
-            alertForEndGame(title: "\(winner)", message: "GG!")
+            alertForEndGame(title: "\(winner)", message: "GG! By: harimasora")
 //            playAgain()
         }
     }
