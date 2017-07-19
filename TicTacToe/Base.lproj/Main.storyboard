@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,209 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFu-iR-u1k">
+                                <rect key="frame" x="110" y="149" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="bQg-v5-Ubn"/>
+                                    <constraint firstAttribute="width" constant="154" id="eMA-x6-thQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ln8-kX-tl4">
+                                <rect key="frame" x="127" y="273" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="NZT-SS-SZl"/>
+                                    <constraint firstAttribute="width" constant="120" id="xBD-5e-x8J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tvG-BU-GRA" kind="presentation" id="jBo-Lg-TRY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DFu-iR-u1k" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="129" id="Cfa-Pu-Fgm"/>
+                            <constraint firstItem="ln8-kX-tl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Etj-6A-PAF"/>
+                            <constraint firstItem="DFu-iR-u1k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TUw-7Q-HPn"/>
+                            <constraint firstItem="ln8-kX-tl4" firstAttribute="top" secondItem="DFu-iR-u1k" secondAttribute="bottom" constant="89" id="zys-d3-T4N"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="ln8-kX-tl4" id="eFV-wg-5RW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-431.19999999999999" y="105.69715142428787"/>
+        </scene>
+        <!--Game Controller-->
+        <scene sceneID="YiL-HE-Khm">
+            <objects>
+                <viewController id="tvG-BU-GRA" customClass="GameController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a0w-We-IbR"/>
+                        <viewControllerLayoutGuide type="bottom" id="aLB-c4-Z26"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5JL-Hf-5yf" customClass="Gam">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NH-6F-4sm" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="147" y="374" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1JV-QV-Gba"/>
+                                    <constraint firstAttribute="width" constant="80" id="iF8-VX-Pk0"/>
+                                </constraints>
+                                <color key="tintColor" red="0.26384651660919189" green="0.55891549587249756" blue="0.85934823751449585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button8"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="AU9-7w-0dW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xo7-yb-4PN" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="59" y="374" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="NdF-Oo-2kO"/>
+                                    <constraint firstAttribute="width" constant="80" id="a7G-yU-b6N"/>
+                                </constraints>
+                                <state key="normal" title="Button7"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="qQR-OD-dqB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY4-VS-Tsa" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="59" y="293" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="2eu-KG-jq5"/>
+                                    <constraint firstAttribute="height" constant="80" id="jFo-OI-NYy"/>
+                                </constraints>
+                                <state key="normal" title="Button4"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="W0w-Cf-IEy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJT-B0-jpk" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="147" y="293" width="80" height="80"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="lhY-cp-cmh"/>
+                                    <constraint firstAttribute="height" constant="80" id="ypl-33-6Ph"/>
+                                </constraints>
+                                <state key="normal" title="Button5"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="EfG-kn-hvs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eA-7X-8pz" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="235" y="293" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="N8Q-vo-I0D"/>
+                                    <constraint firstAttribute="height" constant="80" id="hbT-ty-m4a"/>
+                                </constraints>
+                                <state key="normal" title="Button6"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="gSx-pk-K6u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khf-gc-jHv" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="235" y="211" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="b4c-Br-Etb"/>
+                                    <constraint firstAttribute="height" constant="80" id="bNe-P8-aaR"/>
+                                </constraints>
+                                <state key="normal" title="Button3"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="Yvd-l5-FM1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuB-VL-pMd" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="147" y="211" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="6Br-uq-RiH"/>
+                                    <constraint firstAttribute="width" constant="80" id="HiU-3J-mph"/>
+                                </constraints>
+                                <state key="normal" title="Button2"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="bqa-u7-3Ql"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nri-Aw-2ks" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="235" y="374" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="TAx-6x-BNa"/>
+                                    <constraint firstAttribute="width" constant="80" id="pzP-fk-VUd"/>
+                                </constraints>
+                                <state key="normal" title="Button9"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="atK-P9-WWN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-l9-OBS">
+                                <rect key="frame" x="16" y="100" width="343" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiY-Oq-kVV" customClass="TicTacButton" customModule="TicTacToe" customModuleProvider="target">
+                                <rect key="frame" x="59" y="211" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Qia-6Y-Kj8"/>
+                                    <constraint firstAttribute="width" constant="80" id="ojw-xT-Ur1"/>
+                                </constraints>
+                                <state key="normal" title="Button1"/>
+                                <connections>
+                                    <action selector="changeCollor:" destination="tvG-BU-GRA" eventType="touchUpInside" id="luQ-sN-ofa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="khf-gc-jHv" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="87.5" id="0cG-N3-pyI"/>
+                            <constraint firstItem="QJT-B0-jpk" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" id="6zX-Nq-tdy"/>
+                            <constraint firstItem="yfp-l9-OBS" firstAttribute="top" secondItem="a0w-We-IbR" secondAttribute="bottom" constant="80" id="7VA-fn-iFW"/>
+                            <constraint firstItem="xo7-yb-4PN" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="80.5" id="9y7-g0-9uk"/>
+                            <constraint firstItem="tuB-VL-pMd" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" id="G0I-WX-g65"/>
+                            <constraint firstItem="9eA-7X-8pz" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="87.5" id="I8H-7l-WN4"/>
+                            <constraint firstItem="9eA-7X-8pz" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" id="MHG-Vn-WZl"/>
+                            <constraint firstItem="LY4-VS-Tsa" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" id="MqM-xy-rlI"/>
+                            <constraint firstItem="nri-Aw-2ks" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="87.5" id="NgE-PD-W77"/>
+                            <constraint firstItem="xo7-yb-4PN" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="-88.5" id="R4v-jn-6h9"/>
+                            <constraint firstItem="tuB-VL-pMd" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="-82.5" id="Vt7-Yu-mg7"/>
+                            <constraint firstItem="6NH-6F-4sm" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" id="YDb-lw-NfV"/>
+                            <constraint firstItem="yfp-l9-OBS" firstAttribute="leading" secondItem="5JL-Hf-5yf" secondAttribute="leadingMargin" id="bHM-9B-D7e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yfp-l9-OBS" secondAttribute="trailing" id="kx7-x0-vcb"/>
+                            <constraint firstItem="LY4-VS-Tsa" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="-88.5" id="oky-L1-LCw"/>
+                            <constraint firstItem="MiY-Oq-kVV" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="-82.5" id="pNg-ak-mbq"/>
+                            <constraint firstItem="QJT-B0-jpk" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" id="pxv-Wg-Eow"/>
+                            <constraint firstItem="nri-Aw-2ks" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="80.5" id="qGo-oq-Dk8"/>
+                            <constraint firstItem="6NH-6F-4sm" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="80.5" id="ttz-IP-sds"/>
+                            <constraint firstItem="MiY-Oq-kVV" firstAttribute="centerX" secondItem="5JL-Hf-5yf" secondAttribute="centerX" constant="-88.5" id="xD7-z5-H7j"/>
+                            <constraint firstItem="khf-gc-jHv" firstAttribute="centerY" secondItem="5JL-Hf-5yf" secondAttribute="centerY" constant="-82.5" id="xhw-G5-0Ra"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="b1" destination="MiY-Oq-kVV" id="D14-Al-s3j"/>
+                        <outlet property="b2" destination="tuB-VL-pMd" id="CPd-C9-vKL"/>
+                        <outlet property="b3" destination="khf-gc-jHv" id="mOl-7v-O4T"/>
+                        <outlet property="b4" destination="LY4-VS-Tsa" id="rlv-qo-Zx0"/>
+                        <outlet property="b5" destination="QJT-B0-jpk" id="bC2-xl-NH8"/>
+                        <outlet property="b6" destination="9eA-7X-8pz" id="8nl-g5-K6l"/>
+                        <outlet property="b7" destination="xo7-yb-4PN" id="6TQ-Ef-8Zc"/>
+                        <outlet property="b8" destination="6NH-6F-4sm" id="U7C-Hl-zcV"/>
+                        <outlet property="b9" destination="nri-Aw-2ks" id="dkw-hW-fO3"/>
+                        <outlet property="playerTurn" destination="yfp-l9-OBS" id="KC5-m1-zoC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Vn-Eg-luA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272.80000000000001" y="106.59670164917542"/>
         </scene>
     </scenes>
 </document>
