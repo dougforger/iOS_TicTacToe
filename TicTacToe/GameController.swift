@@ -25,21 +25,14 @@ class GameController: UIViewController {
     var turn: Bool = true
     var turnChekcer: Bool = true
     var winner: String = ""
+    var buttons = [TicTacButton]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: - Definicao da imagem padrao do botao
+        buttons = [b1, b2, b3, b4, b5, b6, b7, b8, b9]
         
-        b1.setImage(UIImage(named: "default.png"), for: .normal)
-        b2.setImage(UIImage(named: "default.png"), for: .normal)
-        b3.setImage(UIImage(named: "default.png"), for: .normal)
-        b4.setImage(UIImage(named: "default.png"), for: .normal)
-        b5.setImage(UIImage(named: "default.png"), for: .normal)
-        b6.setImage(UIImage(named: "default.png"), for: .normal)
-        b7.setImage(UIImage(named: "default.png"), for: .normal)
-        b8.setImage(UIImage(named: "default.png"), for: .normal)
-        b9.setImage(UIImage(named: "default.png"), for: .normal)
+        // MARK: - Definicao da imagem padrao do botao
         
         playerTurn.text = "Let's play some Tic Tac Toe!"
         playerTurn.font = playerTurn.font.withSize(20)
@@ -72,16 +65,14 @@ class GameController: UIViewController {
             }
         }
     
-    if turn == true {
-        playerTurn.text = "Player X... is your turn!"
-    } else {
-        playerTurn.text = "Player O... is your turn!"
-    }
+        if turn == true {
+            playerTurn.text = "Player X... is your turn!"
+        } else {
+            playerTurn.text = "Player O... is your turn!"
+        }
         
-    print(isOver())
         if isOver() == true {
             alertForEndGame(title: "\(winner)", message: "GG! By: harimasora")
-//            playAgain()
         }
     }
     
@@ -133,33 +124,9 @@ class GameController: UIViewController {
     }
     
     func playAgain (sender: UIAlertAction) -> Void {
-        b1.checkedState = .empty
-        b1.setImage(UIImage(named: "default.png"), for: .normal)
-        b1.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b2.checkedState = .empty
-        b2.setImage(UIImage(named: "default.png"), for: .normal)
-        b2.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b3.checkedState = .empty
-        b3.setImage(UIImage(named: "default.png"), for: .normal)
-        b3.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b4.checkedState = .empty
-        b4.setImage(UIImage(named: "default.png"), for: .normal)
-        b4.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b5.checkedState = .empty
-        b5.setImage(UIImage(named: "default.png"), for: .normal)
-        b5.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b6.checkedState = .empty
-        b6.setImage(UIImage(named: "default.png"), for: .normal)
-        b6.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b7.checkedState = .empty
-        b7.setImage(UIImage(named: "default.png"), for: .normal)
-        b7.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b8.checkedState = .empty
-        b8.setImage(UIImage(named: "default.png"), for: .normal)
-        b8.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
-        b9.checkedState = .empty
-        b9.setImage(UIImage(named: "default.png"), for: .normal)
-        b9.tintColor = UIColor(colorLiteralRed: 67/255, green: 143/255, blue: 219/255, alpha: 1)
+        for button in buttons {
+            button.resetToDefault()
+        }
     }
     
     func alertForEndGame(title: String, message: String, style: UIAlertControllerStyle = .actionSheet) {
